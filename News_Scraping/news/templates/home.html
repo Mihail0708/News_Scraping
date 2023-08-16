@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+    <title>Today's News</title>
+</head>
+<body>
+    <header>
+        <h1 class="header">TODAY'S NEWS</h1>
+    </header>
+    <main>
+        <div class="reload"><a href="{% url 'news_create' %}">get news</a></div>
+        <div class="main">
+            {% for object in object_list %}
+            <article class="card">
+                <div class="img_div">
+                    <img src="{{ object.image }}" alt="article_image">
+                </div>
+                <p class="text"><a href="{{ object.url }}">{{ object.title }}</a></p>
+            </article>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <span class="footer">© 2023 Today's news</span>
+    </footer>
+</body>
+</html>
